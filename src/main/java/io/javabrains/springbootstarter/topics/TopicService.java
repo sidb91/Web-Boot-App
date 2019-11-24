@@ -13,12 +13,6 @@ public class TopicService {
 	@Autowired
 	private TopicRepository topicRepo;
 	
-	/*
-	 * private List<Topic> topics = new ArrayList<>(Arrays.asList( new
-	 * Topic("Spring","Spring Framework","Spring Framework Description"), new
-	 * Topic("Java","Core Java","Core Java Description"), new
-	 * Topic("Javascript","Javascript","Javascript") ));
-	 */	
 	public List<Topic> getAllTopics(){
 		
 		List<Topic> topics = new ArrayList<>();
@@ -26,7 +20,7 @@ public class TopicService {
 		return topics;
 	}
 	
-	public Optional<Topic> getTopic(String topicId) {
+	public Optional<Topic> getTopic(Integer topicId) {
 		//return topics.stream().filter(topic -> topic.getId().equals(topicId)).findFirst().get();
 		return topicRepo.findById(topicId);
 	}
@@ -35,7 +29,7 @@ public class TopicService {
 		topicRepo.save(topic);
 	}
 
-	public void updateTopic(Topic topic, String id) {
+	public void updateTopic(Topic topic, Integer id) {
 		/*
 		 * for(int i=0;i<topics.size();i++) { if(topics.get(i).getId().equals(id)) {
 		 * topics.set(i, topic); return; } }
@@ -44,7 +38,7 @@ public class TopicService {
 		
 	}
 
-	public void deleteTopic(String id) {
+	public void deleteTopic(Integer id) {
 		//topics.removeIf(topic -> topic.getId().equals(id));
 		topicRepo.deleteById(id);
 	}
